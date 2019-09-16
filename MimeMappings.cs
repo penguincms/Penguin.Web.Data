@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using System.Globalization;
 using System.IO;
 
 namespace Penguin.Web.Data
@@ -9,9 +11,7 @@ namespace Penguin.Web.Data
     /// </summary>
     public static class MimeMappings
     {
-        #region Fields
-
-        private static IDictionary<string, string> _mappings = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
+        private static readonly IDictionary<string, string> _mappings = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
         {
         // combination of values from Windows 7 Registry and
         // from C:\Windows\System32\inetsrv\config\applicationHost.config
@@ -578,10 +578,6 @@ namespace Penguin.Web.Data
         { ".zip", "application/x-zip-compressed" },
         };
 
-        #endregion Fields
-
-        #region Enums
-
         /// <summary>
         /// Enum representing top-level Mime Types
         /// </summary>
@@ -599,10 +595,6 @@ namespace Penguin.Web.Data
 
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
-        #endregion Enums
-
-        #region Methods
-
         /// <summary>
         /// Returns the string mime type for a given file extension
         /// </summary>
@@ -610,12 +602,9 @@ namespace Penguin.Web.Data
         /// <returns>The string mime type for the file extension</returns>
         public static string GetMimeType(string extension)
         {
-            if (extension == null)
-            {
-                throw new ArgumentNullException("extension");
-            }
+            Contract.Requires(!string.IsNullOrWhiteSpace(extension));
 
-            if (!extension.StartsWith("."))
+            if (extension[0] != '.')
             {
                 extension = "." + extension;
             }
@@ -634,7 +623,7 @@ namespace Penguin.Web.Data
 
             foreach (FileType thisType in Enum.GetValues(typeof(FileType)))
             {
-                if (Mime.ToLower().StartsWith(thisType.ToString().ToLower() + "/"))
+                if (Mime.StartsWith(thisType.ToString() + "/", StringComparison.OrdinalIgnoreCase))
                 {
                     return thisType;
                 }
@@ -642,7 +631,5 @@ namespace Penguin.Web.Data
 
             return FileType.Other;
         }
-
-        #endregion Methods
     }
 }
