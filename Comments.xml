@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Penguin.Web.Data.Local</name>
+    </assembly>
+    <members>
+        <member name="T:Penguin.Web.Data.MimeMappings">
+            <summary>
+            A static class used for mapping common file extensions to MimeTypes
+            </summary>
+        </member>
+        <member name="T:Penguin.Web.Data.MimeMappings.FileType">
+            <summary>
+            Enum representing top-level Mime Types
+            </summary>
+        </member>
+        <member name="M:Penguin.Web.Data.MimeMappings.GetMimeType(System.String)">
+            <summary>
+            Returns the string mime type for a given file extension
+            </summary>
+            <param name="extension">The extension to check</param>
+            <returns>The string mime type for the file extension</returns>
+        </member>
+        <member name="M:Penguin.Web.Data.MimeMappings.GetType(System.String)">
+            <summary>
+            Returns the top level mime type for a given file name (based on extension)
+            </summary>
+            <param name="FileName">The file name to check the mime type of</param>
+            <returns>The top level mime type for a given file name (based on extension)</returns>
+        </member>
+    </members>
+</doc>
