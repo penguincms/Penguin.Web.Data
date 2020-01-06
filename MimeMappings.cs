@@ -604,7 +604,15 @@ namespace Penguin.Web.Data
         /// <returns>The string mime type for the file extension</returns>
         public static string GetMimeType(string extension)
         {
-            Contract.Requires(!string.IsNullOrWhiteSpace(extension));
+            if(extension is null)
+            {
+                return null;
+            }
+
+            if(extension.Length == 0)
+            {
+                return string.Empty;
+            }
 
             if (extension[0] != '.')
             {
