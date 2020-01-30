@@ -21,6 +21,13 @@
             <param name="extension">The extension to check</param>
             <returns>The string mime type for the file extension</returns>
         </member>
+        <member name="M:Penguin.Web.Data.MimeMappings.GetFileExtension(System.String)">
+            <summary>
+            Gets the first matching extension for the mime type
+            </summary>
+            <param name="mimeType">The mime type to look for</param>
+            <returns>The first matching extension for the mime type, or String.Empty if its not found (for concat)</returns>
+        </member>
         <member name="M:Penguin.Web.Data.MimeMappings.GetType(System.String)">
             <summary>
             Returns the top level mime type for a given file name (based on extension)
