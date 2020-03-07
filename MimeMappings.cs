@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Globalization;
 using System.IO;
 
 namespace Penguin.Web.Data
@@ -604,12 +601,12 @@ namespace Penguin.Web.Data
         /// <returns>The string mime type for the file extension</returns>
         public static string GetMimeType(string extension)
         {
-            if(extension is null)
+            if (extension is null)
             {
                 return null;
             }
 
-            if(extension.Length == 0)
+            if (extension.Length == 0)
             {
                 return string.Empty;
             }
@@ -624,7 +621,7 @@ namespace Penguin.Web.Data
 
         private static Dictionary<string, string> ReverseMimeMapping;
 
-        private static object ReverseMappingLock = new object();
+        private static readonly object ReverseMappingLock = new object();
 
         /// <summary>
         /// Gets the first matching extension for the mime type
