@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageProjectUrl>https://github.com/penguincms/Penguin.Web.Data</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/PenguinCMS/Penguin.Web.Data</PackageProjectUrl>
     <Version>5.0.5</Version>
     <Description>Eventual package for web helpers, currently containing only a conversion table from extension to MimeType</Description>
     <AssemblyName>Penguin.Web.Data</AssemblyName>
