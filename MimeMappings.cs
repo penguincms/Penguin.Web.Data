@@ -621,7 +621,7 @@ namespace Penguin.Web.Data
 
         private static Dictionary<string, string> ReverseMimeMapping;
 
-        private static readonly object ReverseMappingLock = new object();
+        private static readonly object ReverseMappingLock = new();
 
         /// <summary>
         /// Gets the first matching extension for the mime type
@@ -646,12 +646,7 @@ namespace Penguin.Web.Data
                 }
             }
 
-            if (ReverseMimeMapping.TryGetValue(mimeType, out string extension))
-            {
-                return extension;
-            }
-
-            return string.Empty;
+            return ReverseMimeMapping.TryGetValue(mimeType, out string extension) ? extension : string.Empty;
         }
 
         /// <summary>
